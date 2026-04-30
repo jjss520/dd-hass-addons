@@ -3,7 +3,6 @@ version: "3.31"
 slug: "sun-panel-dd"
 description: "一个服务器、NAS导航面板、Homepage、浏览器首页、书签管理器"
 url: "https://github.com/jjss520/sun-panel-dd"
-image: "ghcr.io/jjss520/sun-panel-dd"
 arch:
   - amd64
   - armv7
