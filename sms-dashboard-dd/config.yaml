@@ -1,0 +1,28 @@
+name: "SMS Dashboard DD"
+version: "1.0.0"
+slug: "sms-dashboard-dd"
+description: "短信仪表盘管理面板"
+url: "https://github.com/jjss520/sms-dashboard-dd"
+image: "ghcr.io/jjss520/sms-dashboard-dd"
+arch:
+  - amd64
+  - armv7
+  - aarch64
+init: false
+startup: application
+boot: auto
+webui: "http://[HOST]:[PORT:8080]"
+ports:
+  "8080/tcp": 8080
+ports_description:
+  "8080/tcp": "Web界面端口"
+map:
+  - share:rw
+options:
+  api_token: "uyejxhhshfe"
+  jwt_secret: "jwdesxxdf817D"
+schema:
+  api_token: str
+  jwt_secret: str
+panel_icon: "mdi:message-text"
+panel_title: "SMS Dashboard DD"

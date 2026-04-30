@@ -1,0 +1,8 @@
+build_from:
+  amd64: "ghcr.io/home-assistant/amd64-base:3.19"
+  armv7: "ghcr.io/home-assistant/armv7-base:3.19"
+  aarch64: "ghcr.io/home-assistant/aarch64-base:3.19"
+labels:
+  org.opencontainers.image.title: "Sun Panel DD"
+  org.opencontainers.image.description: "一个服务器、NAS导航面板、Homepage、浏览器首页、书签管理器"
+  org.opencontainers.image.source: "https://github.com/jjss520/sun-panel-dd"

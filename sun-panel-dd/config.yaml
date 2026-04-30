@@ -1,0 +1,29 @@
+name: "Sun Panel DD"
+version: "3.31"
+slug: "sun-panel-dd"
+description: "一个服务器、NAS导航面板、Homepage、浏览器首页、书签管理器"
+url: "https://github.com/jjss520/sun-panel-dd"
+image: "ghcr.io/jjss520/sun-panel-dd"
+arch:
+  - amd64
+  - armv7
+  - aarch64
+init: false
+startup: application
+boot: auto
+webui: "http://[HOST]:[PORT:3002]"
+ports:
+  "3002/tcp": 3002
+ports_description:
+  "3002/tcp": "Web界面端口"
+map:
+  - share:rw
+  - config:rw
+options: {}
+schema: {}
+hassio_api: false
+homeassistant_api: false
+auth_api: false
+ingress: false
+panel_icon: "mdi:view-dashboard"
+panel_title: "Sun Panel DD"
