@@ -1,21 +1,30 @@
-# 1. 直接拉取原作者的远程镜像作为基础底包
-FROM ghcr.io/jjss520/sms-dashboard-dd:latest
+ARG BUILD_FROM
+FROM $BUILD_FROM
 
-# 2. 切换到 root 用户（防止原镜像默认使用了普通用户，导致我们无权安装包）
-USER root
+# 安装必需的依赖工具
+RUN apk add --no-cache jq wget bash
 
-# 3. 安装 jq 工具，用于解析 HAOS 的 options.json 配置文件
-# 由于不确定原作者是用 Alpine 还是 Ubuntu/Debian 打包的，这里写了一个兼容写法
-RUN if [ -x "$(command -v apk)" ]; then apk add --no-cache jq; \
-    elif [ -x "$(command -v apt-get)" ]; then apt-get update && apt-get install -y jq; \
-    fi
+# 创建并进入工作目录
+WORKDIR /app
 
-# 4. 删除自带的 data 目录，并将其软链接到 HAOS 的持久化目录 /data
-RUN rm -rf /app/data && ln -s /data /app/data
+# 根据构建时的架构，动态下载正确的二进制程序
+ARG BUILD_ARCH
+RUN if [ "${BUILD_ARCH}" = "aarch64" ]; then \
+        BINARY_URL="https://github.com/jjss520/sms-dashboard-dd/releases/latest/download/sms-dashboard-linux-arm64"; \
+    elif [ "${BUILD_ARCH}" = "armv7" ]; then \
+        BINARY_URL="https://github.com/jjss520/sms-dashboard-dd/releases/latest/download/sms-dashboard-linux-arm"; \
+    else \
+        BINARY_URL="https://github.com/jjss520/sms-dashboard-dd/releases/latest/download/sms-dashboard-linux-amd64"; \
+    fi && \
+    wget -O sms-dashboard $BINARY_URL && \
+    chmod +x sms-dashboard
 
-# 5. 复制并设置我们的启动脚本
+# 将程序默认的数据目录软链接到我们要持久化存储的目标目录
+RUN ln -s /data /app/data
+
+# 复制启动脚本并赋予执行权限
 COPY run.sh /app/run.sh
 RUN chmod +x /app/run.sh
 
-# 6. 覆盖原镜像的启动入口，改为执行我们的脚本
-ENTRYPOINT ["/app/run.sh"]
+# 启动命令
+CMD [ "/app/run.sh" ]
