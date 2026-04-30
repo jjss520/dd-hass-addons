@@ -10,8 +10,8 @@ RUN if [ -x "$(command -v apk)" ]; then apk add --no-cache jq; \
     elif [ -x "$(command -v apt-get)" ]; then apt-get update && apt-get install -y jq; \
     fi
 
-# 4. 删除自带的 data 目录，并将其软链接到你指定的长路径
-RUN rm -rf /app/data && ln -s /data/dd/sms-dashboard /app/data
+# 4. 删除自带的 data 目录，并将其软链接到 HAOS 的持久化目录 /data
+RUN rm -rf /app/data && ln -s /data /app/data
 
 # 5. 复制并设置我们的启动脚本
 COPY run.sh /app/run.sh
