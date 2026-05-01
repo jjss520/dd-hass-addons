@@ -1,0 +1,24 @@
+name: "Bark Server"
+version: "2.0.0"
+slug: "bark-server"
+description: "自建 Bark 推送服务器，向 iPhone 发送自定义推送通知"
+url: "https://github.com/Finb/bark-server"
+image: "finab/bark-server"
+arch:
+  - amd64
+  - armv7
+  - aarch64
+init: false
+startup: application
+boot: auto
+webui: "http://[HOST]:[PORT:8080]"
+ports:
+  "8080/tcp": 8080
+ports_description:
+  "8080/tcp": "Bark 服务器端口"
+map:
+  - share:rw
+options: {}
+schema: {}
+panel_icon: "mdi:bell-ring"
+panel_title: "Bark Server"
