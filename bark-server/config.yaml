@@ -1,5 +1,5 @@
 name: "Bark Server"
-version: "v2.3.4"
+version: "v2.3.5"
 slug: "bark-server"
 description: "自建 Bark 推送服务器，向 iPhone 发送自定义推送通知"
 url: "https://github.com/Finb/bark-server"
