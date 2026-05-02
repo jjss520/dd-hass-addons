@@ -7,7 +7,9 @@ arch:
   - aarch64
 startup: application
 boot: auto
-
+# 🎯 在这里添加资源限制
+cpu: 0.5            # 限制使用最大 50% 的 CPU 核心
+memory: 512        # 限制最大内存为 512MB
 # 🎯 指向你刚刚推上去的专属镜像地址
 image: "crpi-xp12t4ileyfuxc1m.cn-hongkong.personal.cr.aliyuncs.com/jjss520/traccar6.6-jjss520"
 
