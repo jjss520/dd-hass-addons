@@ -1,0 +1,38 @@
+name: "Node-RED DD定制版 (含FFmpeg)"
+version: "1.0"
+slug: "nodered_dd"
+description: "从阿里云拉取的带 FFmpeg 的定制版 Node-RED 镜像"
+arch:
+  - amd64
+  - aarch64
+  - armv7
+init: false
+startup: application
+boot: auto
+
+# 指向你刚刚推送到阿里云的专属地址
+image: "crpi-xp12t4ileyfuxc1m.cn-hongkong.personal.cr.aliyuncs.com/jjss520/nodered-dd"
+
+# 1. 还原 Web 界面快捷入口
+webui: "http://[HOST]:[PORT:1880]"
+
+# 2. 还原宿主机网络模式 (极度重要!)
+host_network: true
+
+ports:
+  "1880/tcp": 1880
+ports_description:
+  "1880/tcp": "Node-RED Web 界面"
+
+# 3. 还原环境变量
+environment:
+  TZ: "Asia/Shanghai"
+  FLOWS: "flows.json"
+
+# 4. 映射 HAOS 的公共目录 (可选，方便 Node-RED 读写 HA 配置或共享文件)
+map:
+  - share:rw
+  - config:rw
+
+options: {}
+schema: {}
