@@ -1,5 +1,5 @@
 name: "Sun-Panel (原生适配版)"
-version: "v1.3.5"
+version: "v1.3.6"
 slug: "sun_panel_dd"
 description: "Sun-Panel v1.3.5，镜像原生读写 /data 目录，完美适配 HAOS。"
 arch:
