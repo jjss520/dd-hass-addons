@@ -1,18 +1,19 @@
-name: "Sun-Panel 定制面板"
-version: "1.1"
+name: "Sun-Panel (原生适配版)"
+version: "v1.3.5"
 slug: "sun_panel_dd"
-description: "一个漂亮的个人首页，数据已重定向至 HAOS /data 目录"
+description: "Sun-Panel v1.3.5，镜像原生读写 /data 目录，完美适配 HAOS。"
 arch:
   - amd64
   - aarch64
 startup: application
 boot: auto
 
-# 🎯 资源配额：限制内存和 CPU，防止“啃食”宿主机
+# 🎯 资源配额：依然加上限制，防止日后失控
 cpu: 0.5
 memory: 512
 
-image: "crpi-xp12t4ileyfuxc1m.cn-hongkong.personal.cr.aliyuncs.com/jjss520/sun-panel-dd"
+# 🎯 直接指向你的远程镜像库
+image: "ghcr.io/jjss520/sun-panel-dd"
 
 ports:
   "3002/tcp": 3002
