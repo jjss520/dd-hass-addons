@@ -1,0 +1,25 @@
+name: "企业微信 API"
+version: "20210126"
+slug: "qywx_api"
+description: "将企业微信消息 API 封装为 HAOS 加载项"
+arch:
+  - amd64
+  - armv7
+  - aarch64
+init: false
+startup: application
+boot: auto
+ports:
+  "5005/tcp": 5005
+ports_description:
+  "5005/tcp": "API 服务端口"
+options:
+  QYWX_SECRET_KEY: "填入你的QYWX_SECRET_KEY"
+  QYWX_CORPID: "填入你的CORPID"
+  QYWX_AGENTID: "AGENTID1,AGENTID2,AGENTID3"
+  QYWX_SECRET: "SECRET1,SECRET2,SECRET3"
+schema:
+  QYWX_SECRET_KEY: str
+  QYWX_CORPID: str
+  QYWX_AGENTID: str
+  QYWX_SECRET: str
