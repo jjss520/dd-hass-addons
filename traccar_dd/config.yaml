@@ -1,0 +1,27 @@
+name: "Traccar GPS (定制版)"
+version: "1.0"
+slug: "traccar_dd"
+description: "Traccar 追踪服务器，数据已重定向至 /data 目录，支持 HAOS 系统备份。"
+arch:
+  - amd64
+  - aarch64
+startup: application
+boot: auto
+
+# 🎯 指向你刚刚推上去的专属镜像地址
+image: "crpi-xp12t4ileyfuxc1m.cn-hongkong.personal.cr.aliyuncs.com/jjss520/traccar6.6-jjss520"
+
+# 还原你原来的端口映射
+ports:
+  "8082/tcp": 8083 # Web 管理界面
+  "5055/tcp": 5056 # 手机端汇报端口
+  "5023/tcp": 5024 # GT06 等设备协议端口
+
+# 核心映射：启用 map 确保 /data 目录被 HAOS 持久化
+map:
+  - share:rw
+  - config:rw
+  - ssl:ro
+
+environment:
+  TZ: "Asia/Shanghai"
