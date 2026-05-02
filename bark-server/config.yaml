@@ -1,9 +1,9 @@
 name: "Bark Server"
-version: "2.0.0"
+version: "2.3.4"
 slug: "bark-server"
 description: "自建 Bark 推送服务器，向 iPhone 发送自定义推送通知"
 url: "https://github.com/Finb/bark-server"
-image: "finab/bark-server"
+image: "ghcr.io/finb/bark-server"
 arch:
   - amd64
   - armv7
