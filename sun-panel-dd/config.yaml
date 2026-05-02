@@ -1,5 +1,5 @@
 name: "Sun-Panel 定制面板"
-version: "1.0"
+version: "1.1"
 slug: "sun_panel_dd"
 description: "一个漂亮的个人首页，数据已重定向至 HAOS /data 目录"
 arch:
