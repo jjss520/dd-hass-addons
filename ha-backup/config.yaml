@@ -1,0 +1,15 @@
+name: "ha backup (阿里云备份同步)"
+version: "1.0"
+slug: "ha_backup_dd"
+description: "自动扫描 HAOS 官方备份并同步至阿里云盘，支持 /data 目录内直接修改脚本。"
+arch:
+  - amd64
+  - aarch64
+startup: services
+boot: auto
+image: "crpi-xp12t4ileyfuxc1m.cn-hongkong.personal.cr.aliyuncs.com/jjss520/ha_backup"
+map:
+  - backup:rw    # 必须赋予读写权限来访问 /backup 目录
+  - config:ro    # 可选：如果你脚本里想备份配置目录
+environment:
+  TZ: "Asia/Shanghai"
