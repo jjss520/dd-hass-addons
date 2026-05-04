@@ -1,5 +1,5 @@
 name: "ha backup (阿里云备份同步)"
-version: "1.0"
+version: "1.1"
 slug: "ha_backup_dd"
 description: "自动扫描 HAOS 官方备份并同步至阿里云盘，支持 /data 目录内直接修改脚本。"
 arch:
