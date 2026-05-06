@@ -1,1 +1,70 @@
+name: frigate-rknpu-dd
+version: 1.0
+slug: 'frigate-rknpu-dd'
+description: 'Frigate NVR 挂载 USB 硬盘 (/media/DD/frigate) 专版'
+url: "https://gitcode.com/waxgourd/addons"
+# 🎯 换成你刚才打包的私有镜像
+image: crpi-xp12t4ileyfuxc1m.cn-hongkong.personal.cr.aliyuncs.com/jjss520/frigate-rknpu-dd
 
+init: false
+startup: application
+boot: manual
+arch:
+  - aarch64
+map:
+  - "media:rw"
+  - "addon_config:rw"
+  - "homeassistant_config:rw"
+webui: "http://[HOST]:[PORT:5000]/"
+watchdog: "http://[HOST]:[PORT:5000]/"
+ingress: true
+ingress_port: 5000
+ingress_entry: /
+panel_icon: "mdi:cctv"
+panel_title: Frigate
+panel_admin: false
+homeassistant_api: true
+hassio_api: true
+hassio_role: manager
+ports:
+  8555/tcp: 8555
+  8555/udp: 8555
+  8554/tcp: null
+  8971/tcp: null
+  5000/tcp: null
+  1984/tcp: null
+  1935/tcp: null
+ports_description:
+  8555/tcp: WebRTC over tcp
+  8555/udp: WebRTC over udp
+  8554/tcp: RTSP Restream
+  8971/tcp: Authenticated Web interface
+  5000/tcp: Web interface (Not required for Hass.io Ingress)
+  1984/tcp: go2rtc API
+  1935/tcp: RTMP streams
+host_network: false
+video: true
+tmpfs: true
+host_ipc: true
+apparmor: true
+full_access: true
+privileged:
+  - BPF
+  - DAC_READ_SEARCH
+  - IPC_LOCK
+  - NET_ADMIN
+  - NET_RAW
+  - PERFMON
+  - SYS_ADMIN
+  - SYS_MODULE
+  - SYS_NICE
+  - SYS_PTRACE
+  - SYS_RAWIO
+  - SYS_RESOURCE
+  - SYS_TIME
+environment:
+  CONFIG_FILE: /config/frigate.yaml
+schema:
+  plus_api_key: password?
+services:
+  - "mqtt:want"
